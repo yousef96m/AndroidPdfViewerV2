@@ -54,7 +54,6 @@ import com.github.barteksc.pdfviewer.util.ArrayUtils;
 import com.github.barteksc.pdfviewer.util.Constants;
 import com.github.barteksc.pdfviewer.util.MathUtils;
 import com.github.barteksc.pdfviewer.util.Util;
-import com.shockwave.pdfium.PdfDocument;
 import com.shockwave.pdfium.PdfiumCore;
 
 import java.io.File;
@@ -272,7 +271,7 @@ public class PDFView extends RelativeLayout {
      */
     private PdfiumCore pdfiumCore;
 
-    private PdfDocument pdfDocument;
+    private com.shockwave.pdfium.PdfDocument pdfDocument;
 
     private ScrollHandle scrollHandle;
 
@@ -846,7 +845,7 @@ public class PDFView extends RelativeLayout {
     /**
      * Called when the PDF is loaded
      */
-    void loadComplete(PdfDocument pdfDocument, int pageWidth, int pageHeight) {
+    void loadComplete(com.shockwave.pdfium.PdfDocument pdfDocument, int pageWidth, int pageHeight) {
         state = State.LOADED;
         this.documentPageCount = pdfiumCore.getPageCount(pdfDocument);
 
@@ -1350,14 +1349,14 @@ public class PDFView extends RelativeLayout {
         return renderDuringScale;
     }
 
-    public PdfDocument.Meta getDocumentMeta() {
+    public com.shockwave.pdfium.PdfDocument.Meta getDocumentMeta() {
         if (pdfDocument == null) {
             return null;
         }
         return pdfiumCore.getDocumentMeta(pdfDocument);
     }
 
-    public List<PdfDocument.Bookmark> getTableOfContents() {
+    public List<com.shockwave.pdfium.PdfDocument.Bookmark> getTableOfContents() {
         if (pdfDocument == null) {
             return new ArrayList<>();
         }
